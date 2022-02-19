@@ -45,6 +45,17 @@ TEST_CASE("checkAndAlert") {
   checkAndAlert(TO_CONTROLLER,batteryCharacter,-10);
   checkAndAlert(TO_CONTROLLER,batteryCharacter,10);
   
+  batteryCharacter.coolingType = MED_ACTIVE_COOLING;
+  checkAndAlert(TO_EMAIL,batteryCharacter,35);
+  checkAndAlert(TO_EMAIL,batteryCharacter,45);
+  checkAndAlert(TO_EMAIL,batteryCharacter,-10);
+  checkAndAlert(TO_EMAIL,batteryCharacter,10);
+  checkAndAlert(TO_CONTROLLER,batteryCharacter,35);
+  checkAndAlert(TO_CONTROLLER,batteryCharacter,45);
+  checkAndAlert(TO_CONTROLLER,batteryCharacter,-10);
+  checkAndAlert(TO_CONTROLLER,batteryCharacter,10);
+  
+    
   batteryCharacter.coolingType = PASSIVE_COOLING;
   checkAndAlert(TO_EMAIL,batteryCharacter,30);
   checkAndAlert(TO_EMAIL,batteryCharacter,40);
@@ -56,3 +67,4 @@ TEST_CASE("checkAndAlert") {
   checkAndAlert(TO_CONTROLLER,batteryCharacter,10);
 	
 }
+
