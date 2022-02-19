@@ -6,11 +6,11 @@
 TEST_CASE("infers the breach according to limits") {
   REQUIRE(inferBreach(12, 20, 30) == TOO_LOW);
   REQUIRE(inferBreach(19, 20, 30) == TOO_LOW);
-  REQUIRE(inferBreach(20, 20, 30) == TOO_LOW);
-  REQUIRE(inferBreach(21, 20, 30) == TOO_LOW);
-  REQUIRE(inferBreach(25, 20, 30) == TOO_LOW);
-  REQUIRE(inferBreach(29, 20, 30) == TOO_LOW);
-  REQUIRE(inferBreach(30, 20, 30) == TOO_LOW);
-  REQUIRE(inferBreach(31, 20, 30) == TOO_LOW);
-  REQUIRE(inferBreach(40, 20, 30) == TOO_LOW);
+  REQUIRE(inferBreach(20, 20, 30) == NORMAL);
+  REQUIRE(inferBreach(21, 20, 30) == NORMAL);
+  REQUIRE(inferBreach(25, 20, 30) == NORMAL);
+  REQUIRE(inferBreach(29, 20, 30) == NORMAL);
+  REQUIRE(inferBreach(30, 20, 30) == NORMAL);
+  REQUIRE(inferBreach(31, 20, 30) == TOO_HIGH);
+  REQUIRE(inferBreach(40, 20, 30) == TOO_HIGH);
 }
