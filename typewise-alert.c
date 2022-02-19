@@ -75,11 +75,3 @@ void TOO_HIGH(const char* recepient)
 	printf("To: %s\n", recepient);
     printf("Hi, the temperature is too high\n");
 }
-
-int main()
-{
-	BatteryCharacter batteryCharacter;
-	batteryCharacter.coolingType = HI_ACTIVE_COOLING;
-	batteryCharacter.alertTarget = TO_EMAIL;
-	checkAndAlert(TO_EMAIL,batteryCharacter,50);
-}
