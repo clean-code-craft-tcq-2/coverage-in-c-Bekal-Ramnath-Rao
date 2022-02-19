@@ -16,13 +16,11 @@ TEST_CASE("infers the breach according to limits") {
 }
 
 TEST_CASE("To test the set limit") {
-  Limit limit;
-  setrangeforCoolingType(20,30,limit);
+  setrangeforCoolingType(20,30);
 }
 
 TEST_CASE("Classify Temperature Breach") {
-  Limit limit;
-  REQUIRE((classifyTemperatureBreach(HI_ACTIVE_COOLING,20,limit) == TOO_LOW));
-  REQUIRE((classifyTemperatureBreach(PASSIVE_COOLING,20,limit) == NORMAL));
-  REQUIRE((classifyTemperatureBreach(MED_ACTIVE_COOLING,20,limit) == NORMAL));
+  REQUIRE((classifyTemperatureBreach(HI_ACTIVE_COOLING,20) == TOO_LOW));
+  REQUIRE((classifyTemperatureBreach(PASSIVE_COOLING,20) == NORMAL));
+  REQUIRE((classifyTemperatureBreach(MED_ACTIVE_COOLING,20) == NORMAL));
 }
