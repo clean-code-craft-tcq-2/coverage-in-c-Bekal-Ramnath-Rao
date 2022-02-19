@@ -43,7 +43,6 @@ BreachType classifyTemperatureBreach(CoolingType coolingType, double temperature
 
 void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC)
 {
-  Limit limit;
   BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC);
   alertTarget(breachType);
 }
