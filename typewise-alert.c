@@ -11,43 +11,49 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   return NORMAL;
 }
 
-void setrangeforCoolingType(float low, float high, Limit limit)
+Limit setrangeforCoolingType(float low, float high)
 {
+	Limit limit;
 	limit.lowerLimitforCoolingType = low;
 	limit.higherLimitforCoolingType = high;
+	return limit;
 }
 
-void PASSIVE_COOLING(Limit limit)
+Limit PASSIVE_COOLING()
 {
-	setrangeforCoolingType(0,35,limit);
+	Limit limitpassiveCoolingType;
+	return limitpassiveCoolingType = setrangeforCoolingType(0,35);
 }
 
-void HI_ACTIVE_COOLING(Limit limit)
+Limit HI_ACTIVE_COOLING()
 {
-	setrangeforCoolingType(0,45,limit);
+	Limit limithighactiveCoolingType;
+	return limithighactiveCoolingType = setrangeforCoolingType(0,45);
 }
 
-void MED_ACTIVE_COOLING(Limit limit)
+Limit MED_ACTIVE_COOLING()
 {
-	setrangeforCoolingType(0,40,limit);
+	Limit limitmediumactiveCoolingType;
+	return limitmediumactiveCoolingType = setrangeforCoolingType(0,40);
 }
 
-BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC, Limit limit) 
+BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC) 
 {
-  coolingType(limit);
-  return inferBreach(temperatureInC, limit.lowerLimitforCoolingType, limit.higherLimitforCoolingType);
+  Limit limitCoolingType;
+  limitCoolingType = coolingType();
+  return inferBreach(temperatureInC, limitCoolingType.lowerLimitforCoolingType, limitCoolingType.higherLimitforCoolingType);
 }
 
 void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC)
 {
   Limit limit;
-  BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC, limit);
+  BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC);
   alertTarget(breachType);
 }
 
 void TO_CONTROLLER(BreachType breachType) {
   const unsigned short header = 0xfeed;
-  printf("%x : %x\n", header, breachType);
+  printf("%x : %x\n", header, *breachType);
 }
 
 void TO_EMAIL(BreachType breachType)
@@ -73,3 +79,10 @@ void TOO_HIGH(const char* recepient)
 	printf("To: %s\n", recepient);
     printf("Hi, the temperature is too high\n");
 }
+
+/*int main()
+{
+	BatteryCharacter batteryCharacter;
+	batteryCharacter.coolingType = HI_ACTIVE_COOLING;
+	checkAndAlert(TO_EMAIL,batteryCharacter,50);
+}*/

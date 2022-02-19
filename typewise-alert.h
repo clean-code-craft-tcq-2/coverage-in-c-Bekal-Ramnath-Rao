@@ -1,15 +1,15 @@
 #pragma once
 
 typedef struct {
-  float lowerLimitforCoolingType;
-  float higherLimitforCoolingType; 
+  double lowerLimitforCoolingType;
+  double higherLimitforCoolingType; 
 }Limit;
 
-typedef void (*CoolingType)(Limit);
+typedef Limit (*CoolingType)();
 
-void PASSIVE_COOLING(Limit);
-void HI_ACTIVE_COOLING(Limit);
-void MED_ACTIVE_COOLING(Limit);
+Limit PASSIVE_COOLING();
+Limit HI_ACTIVE_COOLING();
+Limit MED_ACTIVE_COOLING();
 
 typedef void (*BreachType)(const char*);
 
@@ -18,8 +18,8 @@ void TOO_LOW(const char*);
 void TOO_HIGH(const char*);
 
 BreachType inferBreach(double , double , double );
-BreachType classifyTemperatureBreach(CoolingType , double , Limit);
-void setrangeforCoolingType(float, float, Limit);
+BreachType classifyTemperatureBreach(CoolingType , double);
+Limit setrangeforCoolingType(float, float);
 
 typedef void (*AlertTarget)(BreachType);
 
