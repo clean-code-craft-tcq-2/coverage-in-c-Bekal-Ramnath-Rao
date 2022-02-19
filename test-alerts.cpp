@@ -21,6 +21,7 @@ TEST_CASE("To test the set limit") {
 }
 
 TEST_CASE("Classify Temperature Breach") {
+  Limit limit;
   REQUIRE((classifyTemperatureBreach(HI_ACTIVE_COOLING,20,limit) == TOO_LOW));
   REQUIRE((classifyTemperatureBreach(PASSIVE_COOLING,20,limit) == NORMAL));
   REQUIRE((classifyTemperatureBreach(MED_ACTIVE_COOLING,20,limit) == NORMAL));
