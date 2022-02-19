@@ -35,7 +35,7 @@ TEST_CASE("Classify Temperature Breach") {
 
 TEST_CASE("checkAndAlert") {
   BatteryCharacter batteryCharacter;
-	batteryCharacter.coolingType = HI_ACTIVE_COOLING;
+  batteryCharacter.coolingType = HI_ACTIVE_COOLING;
   checkAndAlert(TO_EMAIL,batteryCharacter,40);
   checkAndAlert(TO_EMAIL,batteryCharacter,50);
   checkAndAlert(TO_EMAIL,batteryCharacter,-10);
@@ -44,4 +44,15 @@ TEST_CASE("checkAndAlert") {
   checkAndAlert(TO_CONTROLLER,batteryCharacter,50);
   checkAndAlert(TO_CONTROLLER,batteryCharacter,-10);
   checkAndAlert(TO_CONTROLLER,batteryCharacter,10);
+  
+  batteryCharacter.coolingType = PASSIVE_COOLING;
+  checkAndAlert(TO_EMAIL,batteryCharacter,30);
+  checkAndAlert(TO_EMAIL,batteryCharacter,40);
+  checkAndAlert(TO_EMAIL,batteryCharacter,-10);
+  checkAndAlert(TO_EMAIL,batteryCharacter,10);
+  checkAndAlert(TO_CONTROLLER,batteryCharacter,30);
+  checkAndAlert(TO_CONTROLLER,batteryCharacter,40);
+  checkAndAlert(TO_CONTROLLER,batteryCharacter,-10);
+  checkAndAlert(TO_CONTROLLER,batteryCharacter,10);
+	
 }
