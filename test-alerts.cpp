@@ -16,4 +16,7 @@ TEST_CASE("infers the breach according to limits") {
   
   Limit limit;
   setrangeforCoolingType(20,30,limit);
+  REQUIRE((classifyTemperatureBreach(HI_ACTIVE_COOLING,20,limit) == NORMAL);
+  REQUIRE((classifyTemperatureBreach(PASSIVE_COOLING,20,limit) == NORMAL);
+  REQUIRE((classifyTemperatureBreach(MED_ACTIVE_COOLING,20,limit) == NORMAL);
 }
