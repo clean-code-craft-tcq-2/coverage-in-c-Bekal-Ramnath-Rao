@@ -21,20 +21,17 @@ Limit setrangeforCoolingType(float low, float high)
 
 Limit PASSIVE_COOLING()
 {
-	Limit limitpassiveCoolingType;
-	return limitpassiveCoolingType = setrangeforCoolingType(0,35);
+	return setrangeforCoolingType(0,35);
 }
 
 Limit HI_ACTIVE_COOLING()
 {
-	Limit limithighactiveCoolingType;
-	return limithighactiveCoolingType = setrangeforCoolingType(0,45);
+	return setrangeforCoolingType(0,45);
 }
 
 Limit MED_ACTIVE_COOLING()
 {
-	Limit limitmediumactiveCoolingType;
-	return limitmediumactiveCoolingType = setrangeforCoolingType(0,40);
+	return setrangeforCoolingType(0,40);
 }
 
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC) 
@@ -80,9 +77,10 @@ void TOO_HIGH(const char* recepient)
     printf("Hi, the temperature is too high\n");
 }
 
-/*int main()
+int main()
 {
 	BatteryCharacter batteryCharacter;
 	batteryCharacter.coolingType = HI_ACTIVE_COOLING;
+	batteryCharacter.alertTarget = TO_EMAIL;
 	checkAndAlert(TO_EMAIL,batteryCharacter,50);
-}*/
+}
