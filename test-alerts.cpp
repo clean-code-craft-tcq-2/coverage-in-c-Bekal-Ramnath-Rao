@@ -23,4 +23,25 @@ TEST_CASE("Classify Temperature Breach") {
   REQUIRE((classifyTemperatureBreach(HI_ACTIVE_COOLING,20) == NORMAL));
   REQUIRE((classifyTemperatureBreach(PASSIVE_COOLING,20) == NORMAL));
   REQUIRE((classifyTemperatureBreach(MED_ACTIVE_COOLING,20) == NORMAL));
+  
+  REQUIRE((classifyTemperatureBreach(HI_ACTIVE_COOLING,-10) == TOO_LOW));
+  REQUIRE((classifyTemperatureBreach(PASSIVE_COOLING,-10) == TOO_LOW));
+  REQUIRE((classifyTemperatureBreach(MED_ACTIVE_COOLING,-10) == TOO_LOW));
+  
+  REQUIRE((classifyTemperatureBreach(HI_ACTIVE_COOLING,50) == TOO_HIGH));
+  REQUIRE((classifyTemperatureBreach(PASSIVE_COOLING,40) == TOO_HIGH));
+  REQUIRE((classifyTemperatureBreach(MED_ACTIVE_COOLING,45) == TOO_HIGH));
+}
+
+TEST_CASE("checkAndAlert") {
+  BatteryCharacter batteryCharacter;
+	batteryCharacter.coolingType = HI_ACTIVE_COOLING;
+  checkAndAlert(TO_EMAIL,batteryCharacter,40);
+  checkAndAlert(TO_EMAIL,batteryCharacter,50);
+  checkAndAlert(TO_EMAIL,batteryCharacter,-10);
+  checkAndAlert(TO_EMAIL,batteryCharacter,10);
+  checkAndAlert(TO_CONTROLLER,batteryCharacter,40);
+  checkAndAlert(TO_CONTROLLER,batteryCharacter,50);
+  checkAndAlert(TO_CONTROLLER,batteryCharacter,-10);
+  checkAndAlert(TO_CONTROLLER,batteryCharacter,10);
 }
