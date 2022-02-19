@@ -14,5 +14,8 @@ TEST_CASE("infers the breach according to limits") {
   REQUIRE(inferBreach(31, 20, 30) == TOO_HIGH);
   REQUIRE(inferBreach(40, 20, 30) == TOO_HIGH);
   
-  REQUIRE(setrangeforCoolingType(20,30));
+  Limit limit;
+  REQUIRE(setrangeforCoolingType(20,30,limit));
+  REQUIRE(limit.lowerLimitforCoolingType == 20);
+	REQUIRE(limit.higherLimitforCoolingType == 30);
 }
