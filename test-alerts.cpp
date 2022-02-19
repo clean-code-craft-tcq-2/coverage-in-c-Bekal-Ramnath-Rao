@@ -72,15 +72,15 @@ TEST_CASE("Cooling type") {
   Limit limit;
   BatteryCharacter batteryCharacter;
   batteryCharacter.coolingType = PASSIVE_COOLING;
-  limit = coolingType();
+  limit = batteryCharacter.coolingType();
   REQUIRE(limit.lowerLimitforCoolingType == 0);
   REQUIRE(limit.higherLimitforCoolingType == 35);
   batteryCharacter.coolingType = MED_ACTIVE_COOLING;
-  limit = coolingType();
+  limit = batteryCharacter.coolingType();
   REQUIRE(limit.lowerLimitforCoolingType == 0);
   REQUIRE(limit.higherLimitforCoolingType == 40);
   batteryCharacter.coolingType = HI_ACTIVE_COOLING;
-  limit = coolingType();
+  limit = batteryCharacter.coolingType();
   REQUIRE(limit.lowerLimitforCoolingType == 0);
   REQUIRE(limit.higherLimitforCoolingType == 45);
 }
