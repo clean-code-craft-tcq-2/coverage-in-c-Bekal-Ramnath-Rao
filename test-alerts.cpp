@@ -68,8 +68,9 @@ TEST_CASE("checkAndAlert") {
 	
 }
 
-TEST_CASE("checkAndAlert") {
+TEST_CASE("Cooling type") {
   Limit limit;
+  BatteryCharacter batteryCharacter;
   batteryCharacter.coolingType = PASSIVE_COOLING;
   limit = coolingType();
   REQUIRE(limit.lowerLimitforCoolingType == 0);
