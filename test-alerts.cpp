@@ -21,16 +21,25 @@ TEST_CASE("To test the set limit") {
 
 TEST_CASE("Classify Temperature Breach") {
   REQUIRE((classifyTemperatureBreach(HI_ACTIVE_COOLING,20) == NORMAL));
+  REQUIRE(coolingType() == HI_ACTIVE_COOLING);
   REQUIRE((classifyTemperatureBreach(PASSIVE_COOLING,20) == NORMAL));
+  REQUIRE(coolingType() == PASSIVE_COOLING);
   REQUIRE((classifyTemperatureBreach(MED_ACTIVE_COOLING,20) == NORMAL));
+  REQUIRE(coolingType() == MED_ACTIVE_COOLING);
   
   REQUIRE((classifyTemperatureBreach(HI_ACTIVE_COOLING,-10) == TOO_LOW));
+  REQUIRE(coolingType() == HI_ACTIVE_COOLING);
   REQUIRE((classifyTemperatureBreach(PASSIVE_COOLING,-10) == TOO_LOW));
+  REQUIRE(coolingType() == PASSIVE_COOLING);
   REQUIRE((classifyTemperatureBreach(MED_ACTIVE_COOLING,-10) == TOO_LOW));
+  REQUIRE(coolingType() == MED_ACTIVE_COOLING);
   
   REQUIRE((classifyTemperatureBreach(HI_ACTIVE_COOLING,50) == TOO_HIGH));
+  REQUIRE(coolingType() == HI_ACTIVE_COOLING);
   REQUIRE((classifyTemperatureBreach(PASSIVE_COOLING,40) == TOO_HIGH));
+  REQUIRE(coolingType() == PASSIVE_COOLING);
   REQUIRE((classifyTemperatureBreach(MED_ACTIVE_COOLING,45) == TOO_HIGH));
+  REQUIRE(coolingType() == MED_ACTIVE_COOLING);
 }
 
 TEST_CASE("checkAndAlert") {
