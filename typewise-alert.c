@@ -36,8 +36,7 @@ Limit MED_ACTIVE_COOLING()
 
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC) 
 {
-  Limit limitCoolingType;
-  limitCoolingType = coolingType();
+  Limit limitCoolingType = coolingType();
   return inferBreach(temperatureInC, limitCoolingType.lowerLimitforCoolingType, limitCoolingType.higherLimitforCoolingType);
 }
 
